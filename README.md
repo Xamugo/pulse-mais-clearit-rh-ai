@@ -7,7 +7,7 @@ Este repositório contém a documentação estratégica, técnica e os artefatos
 * ⚙️ [Contexto Técnico Lite - Etapa 2](docs/technical-context-lite.md) _(Em desenvolvimento)_
 
 ## 👥 Integrantes do Projeto
-* **Seu Nome Completo**
+* **João, Pedro, Gustavo, Nathalia, Mikael**
 
 ## 🎯 Objetivo da Sprint Atual
 Validar com o cliente os pilares do problema (falta de cadência, ausência de registros de 1:1 e invisibilidade de dados pelo RH) e alinhar as fronteiras de escopo do que será exaustivamente testado em ambiente isolado (PoC) utilizando Engenharia de Prompts e Inteligência Artificial.
