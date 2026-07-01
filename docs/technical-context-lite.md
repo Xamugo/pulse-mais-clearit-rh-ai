@@ -1,40 +1,40 @@
 # Contexto Técnico Lite - Etapa 2 (PoC)
 
 ## 1. Escopo de Testes da PoC (O que foi testado)
-Para validar a viabilidade técnica da solução para a ClearIT de forma isolada e segura, focamos em testar a Engenharia de Prompts para duas funções críticas:
-1. **Estruturação de Feedbacks no Modelo SBI** (Situação, Comportamento, Impacto).
-2. **Geração Baseada no Framework de Levels** (Geração de pautas personalizadas).
+Para validar a viabilidade técnica da solução para a ClearIT de forma isolada, focamos em testar o fluxo de inteligência artificial que recebe a **gravação/transcrição de áudio** de uma reunião e gera dois outputs distintos:
+1. **Para o Líder:** Um plano de ação rápido estruturado no modelo SBI (Situação, Comportamento, Impacto)[cite: 1].
+2. **Para o RH:** Um relatório denso e analítico contendo métricas de clima, riscos de turnover e lacunas de competências detectadas na conversa de forma anonimizada.
 
-Conforme as restrições de riscos mapeadas, todos os testes foram realizados utilizando **dados 100% fictícios**, garantindo conformidade com a LGPD.
+Conforme as restrições de riscos mapeadas, todos os testes foram realizados utilizando **dados 100% fictícios**, garantindo total conformidade com a LGPD e regras de privacidade do RH[cite: 1].
 
-## 2. Tecnologias Avaliadas
-* **Modelos de Linguagem (LLMs):** Utilizados para simular o motor de IA do aplicativo (Engenharia de Prompts).
-* **Ambiente de Teste:** Interface de chat para validação manual de respostas (Human-in-the-loop).
+## 2. Arquitetura Tecnológica Avaliada
+* **Speech-to-Text (Transcrição de Áudio):** Tecnologia avaliada para transformar a gravação de voz da 1:1 em texto corrido automaticamente.
+* **Modelo de Linguagem (LLM):** Motor de IA testado via Engenharia de Prompts para ler a transcrição bruta e gerar os relatórios do Líder e do RH[cite: 1].
 
 ## 3. Engenharia de Prompts e Resultados (Evidências)
 
-### Teste 1: Formatador SBI Inteligente
-* **Prompt Utilizado:**
-  > "Abaixe o papel de assistente de RH. Pegue o texto informal de um líder e transforme estritamente na estrutura SBI (Situação, Comportamento e Impacto). Se houver dados pessoais sensíveis ou linguagem tóxica, remova e avise."
-* **Input de Teste (Líder Fictício):** 
-  > "O Joãozinho foi super grosso na reunião com o cliente ontem de tarde, interrompeu o cara duas vezes e o cliente ficou visivelmente incomodado, quase melou o projeto."
-* **Output da IA (Resultado Esperado):**
-  * **Situação:** Reunião com o cliente ontem à tarde.
-  * **Comportamento:** O colaborador interrompeu a fala do cliente duas vezes.
-  * **Impacto:** O cliente demonstrou desconforto, colocando em risco a confiança no projeto.
+### Teste 1: Transcrição Bruta $\rightarrow$ Relatório Denso para o RH
+* **Prompt Utilizado pela IA:**
+  > "Aja como um Analista de RH Sênior especialista em People Analytics. Leia a transcrição bruta da reunião de 1:1 fictícia abaixo. Extraia e gere um relatório denso contendo: 1) Índice de Energia/Bem-estar do colaborador (0 a 10), 2) Principais obstáculos sistêmicos citados, 3) Competências do Framework de Levels trabalhadas e 4) Alerta de Risco de Turnover (Baixo, Médio, Alto) com a justificativa. Remova nomes reais e dados médicos."
+* **Transcrição Bruta de Teste (Áudio Simulado):**
+  > "Cara, então, a gente tá na metade da sprint e eu tô me sentindo muito sobrecarregado porque a equipe de infraestrutura atrasou a entrega do ambiente e eu tô tendo que fazer hora extra pra compensar. Na parte de comunicação com o cliente eu sinto que melhorei, consegui apresentar a última demo sozinho, mas o ambiente tá foda, se continuar nessa pressão de entregas travadas por outras áreas eu não sei quanto tempo aguento nesse projeto."
+* **Output gerado pela IA (Relatório do RH):**
+  * **1) Índice de Bem-estar:** 4/10 (Sinais claros de sobrecarga por fatores externos).
+  * **2) Obstáculos Sistêmicos:** Dependência e gargalo na entrega da equipe de infraestrutura, gerando retrabalho e horas extras.
+  * **3) Competências do Framework de Levels:** Evolução positiva detectada em *Comunicação com Stakeholders* (Apresentou a demo sozinho).
+  * **4) Alerta de Risco de Turnover:** **MÉDIO-ALTO**. O colaborador sinalizou insatisfação com a pressão contínua e mencionou limite de permanência caso o cenário sistêmico não mude.
 
-### Teste 2: Gerador de Pauta (Framework de Levels)
-* **Prompt Utilizado:**
-  > "Gere 2 perguntas de desenvolvimento focadas em carreira para um desenvolvedor Júnior que precisa evoluir na competência de 'Comunicação com Stakeholders' para chegar a Pleno."
-* **Output da IA:** 
-  1. *Como você avalia sua clareza ao explicar impedimentos técnicos para o cliente nas últimas sprints?*
-  2. *Que apoio você precisa para liderar a próxima apresentação de status sem depender do seu coordenador?*
+### Teste 2: Transcrição Bruta $\rightarrow$ Feedback Estruturado para o Líder (Modelo SBI)
+* **Prompt Utilizado pela IA:**
+  > "Com base na mesma transcrição, gere para o Líder um resumo executivo focado em desenvolvimento, organizando os combinados no formato SBI e garantindo que haja um espaço de co-construção do próximo passo."
+* **Output gerado pela IA:**
+  * **Situação:** Alinhamento da metade da sprint[cite: 1].
+  * **Comportamento:** O liderado assumiu a responsabilidade de apresentar a demo sozinho para o cliente e buscou compensar os atrasos[cite: 1].
+  * **Impacto:** Evolução na autonomia de comunicação, mas com alto desgaste de energia individual[cite: 1].
+  * **Acordo/Próximo Passo:** O gestor vai intervir diretamente junto ao time de infraestrutura para remover o obstáculo antes da próxima reunião quinzenal[cite: 1].
 
-## 4. Alinhamento com os Resultados Esperados e Próximos Passos
-Os testes provaram que a IA consegue traduzir linguagem informal em estruturas profissionais (SBI) e aplicar as regras de negócio do RH sem a necessidade de desenvolvimento de código complexo nesta fase. 
-
-**Escopo Pretendido para o MVP:**
-* Interface Web simples (Acesso fácil via browser para mobile/desktop).
-* Campo de texto/áudio para o líder inserir as notas da reunião.
-* Tela de visualização e edição do relatório SBI gerado pela IA antes de salvar.
-* Exportação dos dados consolidados em formato CSV/Excel para envio ao RH.
+## 4. Alinhamento e Escopo do MVP (Aplicativo)
+Com o sucesso da PoC de prompts, o escopo definido para a construção do aplicativo será[cite: 1]:
+* **Interface:** Aplicativo Web/Mobile com um botão simples de "Gravar Reunião"[cite: 1].
+* **Processamento:** O app grava o áudio, envia para a API de transcrição e roda os prompts validados nesta PoC de forma automática[cite: 1].
+* **Segurança (Guardrails):** Mascaramento automático de dados pessoais antes do relatório ser enviado para o banco de dados do RH, respeitando estritamente a LGPD[cite: 1].
