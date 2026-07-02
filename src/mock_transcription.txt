@@ -1,4 +1,9 @@
-Transcrição de Áudio de Teste (Fictícia) - Reunião 1:1
-Contexto: Desenvolvedor Júnior com 6 meses de empresa.
-
-"Cara, de verdade, eu acho que o projeto tá andando bem, mas essa semana foi muito estressante porque a API de infraestrutura caiu três vezes e travou o meu código. Eu tive que fazer hora extra na terça pra não estourar o prazo da entrega do cliente. Pelo menos na reunião de ontem eu consegui apresentar a nossa parte sozinho pro diretor e deu tudo certo, ele elogiou bastante. Mas se o ambiente continuar caindo direto assim, fica difícil aguentar a pressão de entrega todo dia."
+{
+  "id_reuniao": "10293",
+  "respostas_fechadas": {
+    "alinhamento_pdi": "SIM",
+    "gargalo_infraestrutura": "NÃO",
+    "dificuldade_tecnica": "SIM"
+  },
+  "dissertacao_argumentativa": "Discutimos o desempenho na sprint atual. O colaborador travou na configuração dos ambientes logo no início da semana devido à falta de documentação, mas buscou ajuda proativamente e resolveu o problema. Ele vem evoluindo rápido tecnicamente e cumpre as metas do PDI, demonstrando que está pronto para assumir desafios de nível Pleno no próximo trimestre."
+}
