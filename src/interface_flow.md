@@ -1,16 +1,16 @@
-# Fluxo de Interface do Usuário (UI/UX) - MVP
+# Fluxo de Telas do Aplicativo — Modelo de Questionário de Fechamento
 
-Este documento mapeia as telas planejadas para o aplicativo de gravação e inteligência de 1:1s e Feedbacks.
+Este documento substitui o fluxo de gravação por uma jornada de formulário ágil de 5 minutos.
 
-## 📱 Fluxo 1: A Visão do Líder (Preparação e Registro)
-1. **Tela de Login/Dashboard:** O líder visualiza a lista de seus liderados com alertas de cores (Ex: Vermelho = Sem 1:1 há mais de 30 dias).
-2. **Tela de Preparação:** Ao clicar em um liderado, a IA exibe o Framework de Levels dele e sugere 2 perguntas de desenvolvimento para a reunião.
-3. **Tela de Reunião (O Gravador):** Um botão grande de "Iniciar Gravação de Áudio". O app grava a conversa em tempo real.
-4. **Tela de Revisão (Pós-Reunião):** O app exibe a transcrição e o relatório formatado pela IA no modelo SBI (Situação, Comportamento, Impacto). O líder pode editar os combinados antes de salvar.
+## 📱 Fluxo do Líder e Liderado (Síncrono)
+1. **Tela Inicial:** O líder seleciona o liderado e escolhe o tema da 1:1 (Pautas Inteligentes sugeridas pelo app).
+2. **Tela de Conversa:** Roteiro visual na tela para guiar o papo (sem registros automáticos ainda).
+3. **Tela do Questionário (Os 5 minutos finais):**
+   * Checkbox/Botões de **Sim ou Não** para perguntas rápidas de temperatura (PDI, prazos, bloqueios).
+4. **Tela de Argumentação:** Um campo de texto aberto ("Dissertação Executiva") onde o líder digita o resumo dos combinados e da performance.
+5. **Tela de Confirmação:** Ambos revisam as respostas antes do envio.
 
-## 📊 Fluxo 2: A Visão do RH (Dashboard Analítico Denso)
-1. **Tela Principal de People Analytics:** Exibe gráficos consolidados gerados pela IA (sem expor nomes, respeitando a LGPD).
-2. **Métricas em Tempo Real:** 
-   * Taxa de adesão de 1:1s por área da ClearIT.
-   * Gráfico de nuvem de palavras com os "Obstáculos Sistêmicos" mais citados na semana (Ex: gargalos com o time de infraestrutura).
-   * Alertas de criticidade de turnover (Áreas com maior risco de perda de talentos).
+## 📊 Fluxo do RH (Dashboard Estatístico)
+1. **Painel de People Analytics:** Gráficos gerados a partir do compilado das respostas de "Sim/Não" de toda a empresa.
+2. **Mapeamento de Evolução:** Lista automatizada indicando quais colaboradores estão sendo sinalizados pelos líderes como "Prontos para subir de nível".
+3. **Alertas de Risco:** Filtro que aponta times com recorrência de respostas "Não" em perguntas de bem-estar ou metas.
