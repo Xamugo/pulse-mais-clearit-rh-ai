@@ -1,39 +1,17 @@
-# Projeto Pulse Mais - Solução de IA para Gestão de Liderança (ClearIT)
+# Projeto Pulse Mais — Plataforma de Fechamento de Feedbacks (ClearIT)
 
-Este repositório contém a documentação estratégica, técnica, os artefatos e a prova de conceito (PoC) desenvolvidos para a otimização de processos de RH, engajamento e retenção de lideranças na ClearIT.
+Este repositório contém a documentação e os artefatos da Prova de Conceito (PoC) desenvolvidos para a ClearIT. Remodelamos o escopo do projeto para eliminar qualquer barreira de privacidade ou gravação de voz.
 
-A solução consiste em uma plataforma mobile/web capaz de registrar reuniões de 1:1 e Feedbacks via áudio, transformando transcrições brutas em inteligência de liderança e relatórios analíticos densos para o setor de People Analytics.
-
----
-
-## 🗺️ Fluxo de Funcionamento da Solução (PoC/MVP)
-
-Abaixo está mapeado o fluxo de inteligência da nossa aplicação, demonstrando como a gravação de voz se transforma em ferramentas práticas para o Líder e visibilidade estratégica para o RH:
-
-![Fluxo de Inteligência de 1:1 e Feedback](fluxo-poc.png)
+Nossa solução agora é uma **Plataforma de Fechamento Co-construído de 1:1 e Feedbacks**. Nos 5 minutos finais da reunião, líder e liderado respondem a um questionário rápido de Sim/Não e preenchem um campo dissertativo-argumentativo com os acordos. A IA processa esses dados para gerar os relatórios do Líder e do RH.
 
 ---
 
-## 📌 Links Rápidos da Documentação
+## 📌 Links Rápidos da Nova Estrutura
 
-### 📂 Pasta `docs/` (Regras de Negócio e Planejamento)
-* 📄 [Contexto de Negócio Lite - Etapa 1](docs/business-context-lite.md) — Mapeamento do problema de retenção, ausência de registros e dores da ClearIT.
-* ⚙️ [Contexto Técnico Lite - Etapa 2](docs/technical-context-lite.md) — Engenharia de prompts testada, massas de dados fictícios para validação de IA e conformidade com LGPD.
+### 📂 Pasta `docs/` (Planejamento e Negócio)
+* 📄 [Contexto Técnico Lite - Etapa 2](docs/technical-context-lite.md) — Engenharia de prompts e testes focados em analisar formulários e textos dissertativos.
 
-### 📂 Pasta `src/` (Arquitetura Técnica do MVP)
-* 🛠️ [Templates de Prompts (JSON)](src/prompts_templates.json) — Estrutura de código simulando onde as instruções de IA ficam armazenadas no sistema.
-* 💬 [Transcrição de Teste (Massa de Dados)](src/mock_transcription.txt) — Exemplo de áudio bruto convertido em texto utilizado para validar os motores de LLM.
-* 📱 [Fluxo de Interface e Telas (UI/UX)](src/interface_flow.md) — Mapeamento da jornada visual do Líder e do painel de People Analytics do RH.
-
----
-
-## 👥 Integrantes do Projeto
-* João, Pedro, Gustavo, Nathalia, Mikael
-
----
-
-## 🎯 Objetivo da Sprint Atual
-Validar com o cliente e com a banca acadêmica a viabilidade técnica da extração de dados através de Inteligência Artificial e Engenharia de Prompts. Provamos de forma isolada (PoC) que dados não estruturados de áudio podem gerar relatórios de aderência ao modelo SBI para líderes e People Analytics profundo para o RH, sem violar a privacidade e com mascaramento de dados sensíveis.
-
----
-*Nota: Todos os dados apresentados e testados nesta fase são simulados e fictícios, conforme os requisitos da PoC da Sprint 2.*
+### 📂 Pasta `src/` (Arquitetura do MVP)
+* 🛠️ [Templates de Prompts (JSON)](src/prompts_templates.json) — Configuração de como a IA lê o formulário para gerar os relatórios.
+* 📊 [Exemplo de Entrada de Formulário (JSON)](src/mock_form_input.json) — Modelo das respostas de Sim/Não e do texto dissertativo coletados no app.
+* 📱 [Fluxo de Interface (UI/UX)](src/interface_flow.md) — Mapeamento das telas do questionário quinzenal e dos dashboards.
