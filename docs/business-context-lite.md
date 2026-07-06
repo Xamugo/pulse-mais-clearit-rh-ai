@@ -40,7 +40,7 @@ O **Pulse Mais** é um assistente de Inteligência Artificial integrado ao proce
 
 | ID | Funcionalidade (Feature) | Prioridade | Estado Atual | Notas / Evidências |
 |---|---|---|---|---|
-| **F01** | Gravação/Entrada de Dados do Questionário de Fechamento | Alta | A Fazer | Entrada quanti-qualitativa de dados pelo líder. |
+| **F01** | Entrada de Dados do Questionário de Fechamento | Alta | A Fazer | Entrada quanti-qualitativa de dados pelo líder. |
 | **F02** | Pautas Inteligentes Baseadas no Framework de Levels | Alta | A Fazer | Sugestões automáticas de perguntas de desenvolvimento. |
 | **F03** | Processamento de Feedback SBI por IA | Alta | Concluído (PoC) | Transformação de textos dissertativos no formato SBI. |
 | **F04** | Higienização e Relatório Executivo para o RH por IA | Alta | Concluído (PoC) | Remoção de dados sensíveis e geração de logs macro. |
@@ -96,7 +96,7 @@ O **Pulse Mais** é um assistente de Inteligência Artificial integrado ao proce
 *   **`RN02` — Filtro Organizacional (Antifofoca):** A Inteligência Artificial deve atuar filtrando as dissertações de fechamento, eliminando expressões com julgamentos de caráter pessoal ("ele é preguiçoso", "está de má vontade") ou opiniões sobre terceiros sem evidência. O relatório de saída para o RH deve conter apenas informações estruturadas de competências, bloqueios operacionais de infraestrutura e metas de desenvolvimento do PDI.
 *   **`RN03` — Responsabilidade Humana (Human-in-the-loop):** A inteligência artificial atua exclusivamente como suporte e sugestão. O líder humano é o único responsável final pelas avaliações, feedbacks e acordos tomados. A interface da aplicação deve exibir um alerta lembrando o líder de revisar as saídas da IA antes de validá-las.
 *   **`RN04` — Controle de Cadência e Alertas de Temperatura:** O sistema deve calcular a diferença de dias entre os registros de 1:1 de cada liderado. Caso um colaborador fique mais de 30 dias sem reunião registrada, um alerta visual deve ser emitido para o líder correspondente e um indicador consolidado de "colaboradores em atraso" deve ser enviado no relatório de RH.
-*   **`RN05` — Padrão SBI Obrigatório para Avaliações:** Todo feedback registrado na ferramenta que indique comportamento que precise ser ajustado ou reconhecido deve seguir a estrutura SBI (Situação, Comportamento, Impacto). Feedbacks sem contextualização factual e impacto concreto serão bloqueados ou sinalizados para correção antes da gravação.
+*   **`RN05` — Padrão SBI Obrigatório para Avaliações:** Todo feedback registrado na ferramenta que indique comportamento que precise ser ajustado ou reconhecido deve seguir a estrutura SBI (Situação, Comportamento, Impacto). Feedbacks sem contextualização factual e impacto concreto serão bloqueados ou sinalizados para correção antes do salvamento final no banco de dados.
 
 ---
 

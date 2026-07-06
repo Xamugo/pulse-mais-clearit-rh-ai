@@ -156,5 +156,5 @@ A persistência do sistema estrutura-se em cinco entidades fundamentais:
 ---
 
 ## 7. Evidência de Teste da PoC
-A validação das regras de negócios e prompts foi registrada com sucesso no arquivo local `src/mock_transcription.txt` utilizando o prompt estruturado de classificação quanti-qualitativo. O motor de IA identificou corretamente as competências e gerou o output exato alinhado com o esperado pelas personas e pelo RH da ClearIT.
+A validação das regras de negócios e prompts foi registrada com sucesso no arquivo local `src/mock_form_input.json` utilizando o prompt estruturado de classificação quanti-qualitativo. O motor de IA identificou corretamente as competências e gerou o output exato alinhado com o esperado pelas personas e pelo RH da ClearIT.
 
