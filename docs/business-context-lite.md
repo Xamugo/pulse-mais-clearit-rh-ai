@@ -17,6 +17,22 @@ O **Pulse Mais** é um assistente de Inteligência Artificial integrado ao proce
 | **Líder Engajado** | Gestor experiente que acredita fortemente nas 1:1s e prioriza a gestão de pessoas. | Gargalo de tempo para planejar pautas personalizadas e dificuldades para gerenciar a cadência regular com grandes equipes. | Agilizar a estruturação dos registros pós-reunião e organizar pautas com base no histórico anterior de forma automatizada. |
 | **Gerente de RH** *(Priscila Bacelar)* | Responsável por monitorar o clima, planos de desenvolvimento e calibração de performance. | O RH trabalha apagando incêndios por não ter visibilidade analítica da qualidade e frequência das 1:1s nas áreas. | Consolidar dados macros anonimizados de People Analytics (riscos de turnover, status de PDI e prontidão de promoção) sem ferir a LGPD. |
 
+### 2.1. Framework de Levels de Referência (Dados da PoC)
+A plataforma utiliza a seguinte régua de cargos e competências comportamentais/técnicas simulada para a ClearIT:
+
+*   **L1 — Colaborador Júnior (Júnior):**
+    *   *Autonomia Técnica:* Executa tarefas básicas de desenvolvimento sob supervisão constante; documenta as tarefas de forma satisfatória; reporta impedimentos logo que ocorrem.
+    *   *Trabalho em Equipe:* Comunica-se de forma clara nas reuniões diárias; compartilha conhecimento básico; colabora construtivamente com o time.
+    *   *Qualidade de Entrega:* Escreve códigos funcionais simples; corrige defeitos básicos identificados no code review.
+*   **L2 — Colaborador Pleno (Pleno):**
+    *   *Resolução de Problemas:* Propõe e implementa soluções para problemas de complexidade média de forma autônoma; sabe identificar trade-offs simples de performance.
+    *   *Mentoria:* Auxilia no onboarding de novos colaboradores do time; tira dúvidas e apoia no desenvolvimento de nível L1.
+    *   *Comunicação Técnica:* Explica decisões arquiteturais simples e documenta fluxos de forma clara para que qualquer membro do time entenda.
+*   **L3 — Colaborador Sênior (Sênior):**
+    *   *Liderança Técnica:* Conduz discussões arquiteturais complexas; define padrões de código; atua proativamente mitigando gargalos e riscos de escalabilidade.
+    *   *Impacto de Negócio:* Conecta as decisões de engenharia aos objetivos estratégicos da organização; possui visão de negócio e produto.
+    *   *Mentoria e Cultura:* Atua como mentor ativo de colaboradores L2 e L1; influencia positivamente a cultura de qualidade técnica da ClearIT.
+
 ## 3. Dores do Cliente (Problemas que resolvemos)
 
 | Dor Mapeada | Impacto no Negócio (O que custa hoje) | Solução da Plataforma |
@@ -57,36 +73,78 @@ O **Pulse Mais** é um assistente de Inteligência Artificial integrado ao proce
 *   **Quero** visualizar o nível atual do meu liderado no Framework de Levels e receber sugestões automáticas de perguntas de desenvolvimento,  
 *   **Para** que eu possa estruturar e direcionar uma conversa de carreira relevante sem gastar tempo com preparação manual complexa.
 *   **Critérios de Aceite:**
-    1. Dado que o líder acessa a tela de preparação, quando seleciona um colaborador, então o sistema deve exibir seu cargo atual e as competências esperadas de acordo com o Framework de Levels.
-    2. Dado o nível do colaborador, quando a pauta é gerada, então o sistema deve fornecer no mínimo 2 perguntas de desenvolvimento específicas para o nível (ex: sugestões de PDI ou desafios de carreira).
-    3. Dado a exibição das sugestões, quando o líder decide iniciar a conversa, então deve haver um botão de ação rápida para ir para a tela de visualização do roteiro de forma imediata.
+    *   **Cenário 1: Seleção de Colaborador L1 (Júnior)**
+        *   **Dado** que o líder está na tela de preparação de 1:1,
+        *   **Quando** ele seleciona um colaborador com cargo cadastrado no nível "L1 (Júnior)",
+        *   **Então** o sistema deve renderizar o cargo "Júnior" na interface e exibir as perguntas de desenvolvimento:
+            1. *"Como você está se sentindo em relação à sua autonomia diária nas tarefas da Sprint? Onde sente mais bloqueios?"*
+            2. *"Houve alguma oportunidade de colaborar com outros colegas que você gostaria de destacar?"*
+    *   **Cenário 2: Seleção de Colaborador L2 (Pleno)**
+        *   **Dado** que o líder está na tela de preparação de 1:1,
+        *   **Quando** ele seleciona um colaborador com cargo cadastrado no nível "L2 (Pleno)",
+        *   **Então** o sistema deve renderizar o cargo "Pleno" na interface e sugerir as perguntas de desenvolvimento:
+            1. *"Como tem sido a experiência de tirar dúvidas e apoiar os colegas iniciantes do time?"*
+            2. *"Que tipo de problema técnico de média complexidade você liderou ou resolveu autonomamente recentemente?"*
+    *   **Cenário 3: Seleção de Colaborador L3 (Sênior)**
+        *   **Dado** que o líder está na tela de preparação de 1:1,
+        *   **Quando** ele seleciona um colaborador com cargo cadastrado no nível "L3 (Sênior)",
+        *   **Então** o sistema deve renderizar o cargo "Sênior" na interface e sugerir as perguntas de desenvolvimento:
+            1. *"Como as suas decisões arquiteturais recentes impactaram a escalabilidade e os objetivos de negócio da ClearIT?"*
+            2. *"De que forma você está estruturando sua mentoria para elevar a maturidade técnica dos colaboradores L2?"*
 
 #### **US02 — Registro Quanti-Qualitativo Rápido (F01)**
 *   **Como** líder,  
 *   **Quero** registrar respostas rápidas de Sim/Não e uma breve dissertação argumentativa do encerramento da 1:1,  
 *   **Para** formalizar os acordos da conversa em menos de 5 minutos, sem gerar barreiras de burocracia ou uso de áudio.
 *   **Critérios de Aceite:**
-    1. Dado o término da conversa de 1:1, quando o líder aciona a tela de fechamento, então o sistema deve apresentar perguntas binárias fechadas obrigatórias (sobre alinhamento de PDI, bloqueios externos e prazos).
-    2. Dado o preenchimento das perguntas de Sim/Não, quando o líder acessa o campo de texto livre, então o sistema deve apresentar um campo dissertativo incentivando o resumo objetivo da performance e combinados.
-    3. Dado que o líder finaliza o formulário, quando clica em enviar, então as respostas devem ser salvas de forma síncrona.
+    *   **Cenário 1: Validação de Campos Obrigatórios**
+        *   **Dado** que o líder está na tela de questionário de fechamento,
+        *   **Quando** ele tenta clicar no botão "Enviar para Análise" sem marcar todas as 3 respostas de Sim/Não ou com a dissertação contendo menos de 100 caracteres,
+        *   **Então** o sistema deve manter o botão "Enviar para Análise" desabilitado e exibir alertas visuais em vermelho nos campos pendentes.
+    *   **Cenário 2: Validação de Limites de Texto**
+        *   **Dado** que o líder está digitando a "Dissertação Executiva" do encerramento,
+        *   **Quando** a quantidade de caracteres atinge 1000 caracteres,
+        *   **Então** o sistema deve impedir a digitação de novos caracteres e exibir um contador de caracteres `1000/1000` em vermelho.
+    *   **Cenário 3: Envio de Dados do Formulário**
+        *   **Dado** que o formulário está preenchido corretamente (3 checkboxes marcados e texto de 150 caracteres),
+        *   **Quando** o líder clica no botão "Enviar para Análise",
+        *   **Então** o sistema deve desabilitar o botão de envio, exibir um elemento visual de carregamento (spinner) com a mensagem *"IA processando feedback síncrono..."* e realizar a chamada POST à API REST.
 
 #### **US03 — Geração de Feedback SBI via IA (F03)**
 *   **Como** líder (especialmente em transição técnico-gestão),  
 *   **Quero** que a Inteligência Artificial processe a dissertação corrida que escrevi e a organize no modelo Situação, Comportamento e Impacto (SBI),  
 *   **Para** que eu possa ter um relatório formatado de feedback profissional, reduzindo o meu viés subjetivo e gerando ações práticas.
 *   **Critérios de Aceite:**
-    1. Dado que a dissertação corrida foi enviada ao servidor, quando o motor de IA processa o texto, então deve retornar blocos específicos estruturados nas chaves de Situação (contexto), Comportamento (fato observado) e Impacto (consequência).
-    2. Dado o relatório SBI gerado, quando exibido para o líder na interface, então deve sugerir ao menos uma recomendação de ação prática ou combinado para o Plano de Desenvolvimento Individual (PDI).
-    3. Dado o feedback estruturado gerado pela IA, quando exibido na tela de revisão, então o líder deve ter a opção de editar o texto antes de enviá-lo de forma final (Garantia de Human-in-the-loop).
+    *   **Cenário 1: Renderização dos Blocos Estruturados**
+        *   **Dado** que a API retornou o JSON de processamento com sucesso,
+        *   **Quando** a interface exibe a tela de revisão de feedback SBI,
+        *   **Então** o sistema deve expor quatro caixas de texto editáveis: "Situação", "Comportamento", "Impacto" e "Ação de Desenvolvimento/PDI Sugerida" contendo os dados correspondentes retornados pela IA.
+    *   **Cenário 2: Ajuste Humano (Human-in-the-loop)**
+        *   **Dado** que o líder está revisando os blocos na tela,
+        *   **Quando** ele edita manualmente o texto gerado em qualquer um dos blocos,
+        *   **Então** o sistema deve aceitar a alteração e utilizá-la como o valor definitivo para o salvamento final.
+    *   **Cenário 3: Confirmação e Encerramento da 1:1**
+        *   **Dado** que o líder aprovou a redação final do feedback,
+        *   **Quando** ele clica no botão "Salvar e Concluir",
+        *   **Então** o sistema deve enviar as modificações para salvar no banco de dados, habilitar a geração de exportação em PDF e redirecionar o usuário à tela de listagem inicial com a notificação *"Reunião 10293 salva com sucesso!"*.
 
 #### **US04 — Relatório Anonimizado e Higienizado para o RH (F04 & F05)**
 *   **Como** gerente de RH (Priscila Bacelar),  
 *   **Quero** receber relatórios das reuniões em formato macro, higienizados de dados sensíveis e com as categorizações de desenvolvimento geradas por IA,  
 *   **Para** monitorar a evolução dos times e riscos organizacionais de forma agregada, mantendo total sigilo individual e segurança jurídica.
 *   **Critérios de Aceite:**
-    1. Dado o processamento de uma dissertação pela IA, quando houver referências a dados pessoais identificáveis (nomes, CPFs, condições de saúde, faixa salarial), então a IA deve limpar ou omitir esses dados antes de repassar os registros à base acessível pelo RH.
-    2. Dado a validação qualitativa do texto pela IA, quando o processamento termina, então o sistema deve gerar indicadores macros com o status do PDI (Ativo/Inativo), identificação de barreiras comportamentais e prontidão para evolução de cargo (Júnior/Pleno/Sênior).
-    3. Dado o acesso do RH ao dashboard analítico, quando visualizados os índices consolidados de People Analytics, então o sistema deve apresentar as informações de forma agregada (gráficos de pizza/barras por área), impedindo a identificação de indivíduos específicos em turmas pequenas.
+    *   **Cenário 1: Higienização de PII (Dados Pessoais)**
+        *   **Dado** que a dissertação inserida pelo líder contenha nomes próprios ("Pedro de Souza"), dados financeiros ("recebe R$ 7.200,00"), termos médicos ("gripe e atestado"),
+        *   **Quando** a IA processa a dissertação,
+        *   **Então** deve higienizar o texto e salvar no log do RH substituindo os dados sensíveis por termos genéricos, ex: `[COLABORADOR]`, `[SALÁRIO OMITIDO]` e `[CONDIÇÃO MÉDICA OMITIDA]`.
+    *   **Cenário 2: Categorização do Log de RH**
+        *   **Dado** que a IA processou qualitativamente a dissertação,
+        *   **Quando** a API grava na tabela `RHAuditLog`,
+        *   **Então** os campos `status_pdi`, `barreiras_comportamentais`, `prontidao_carreira` e `sinalizacao_risco_turnover` devem conter valores tipados de forma exata de acordo com a leitura semântica.
+    *   **Cenário 3: Visualização por Área no Dashboard**
+        *   **Dado** que a gerente de RH acessa o painel de People Analytics,
+        *   **Quando** filtra as informações pela área de "Tecnologia",
+        *   **Então** o sistema deve apresentar as notas agregadas das áreas e a lista de colaboradores sinalizados para promoção, omitindo os textos das dissertações para garantir confidencialidade de time.
 
 ---
 
@@ -116,4 +174,5 @@ O escopo para a PoC e o MVP foi validado e aprovado formalmente.
 | Data | Ciclo / Feature | O que muda no próximo ciclo (Motivação) |
 |---|---|---|
 | 2026-06-30 | Gravação de áudio -> Formulários | Substituição da captação de áudio contínua (cancelada por inibição de privacidade e custos de LGPD) por um formulário de fechamento ágil síncrono de 5 minutos, processado por IA. |
+
 
