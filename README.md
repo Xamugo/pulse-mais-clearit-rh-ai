@@ -49,8 +49,13 @@ A solução consome duas frentes de dados coletadas em menos de 5 minutos ao fim
 
 ---
 
-## 👥 Integrantes do Projeto
-* João Pedro, Pedro, Gustavo, Nathalia, Mikael
+## 👥 Integrantes do Projeto e Divisão de Frentes
+*   **João Pedro** — *Product Manager / Product Designer*: Responsável pelo escopo, especificação de requisitos, mapeamento de dores e alinhamento de regras de negócio.
+*   **Pedro** — *Lead Backend Engineer*: Responsável pela definição da modelagem de dados, arquitetura de entidades e estruturação do contrato REST API.
+*   **Gustavo** — *Machine Learning / Prompt Engineer*: Responsável pelo desenvolvimento e validação dos templates de prompts e infraestrutura de guardrails de privacidade (LGPD).
+*   **Nathalia** — *Frontend Engineer*: Responsável pelo desenho e validação da interface, mockups de fluxo de telas (UI/UX) e acessibilidade para líderes e RH.
+*   **Mikael** — *QA & Compliance Engineer*: Responsável pela validação funcional, controle de qualidade, testes da PoC com massa de dados simulada e conformidade regulatória.
+
 
 ---
 
