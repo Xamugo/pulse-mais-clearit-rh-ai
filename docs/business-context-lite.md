@@ -92,59 +92,66 @@ A plataforma utiliza a seguinte régua de cargos e competências comportamentais
             1. *"Como as suas decisões arquiteturais recentes impactaram a escalabilidade e os objetivos de negócio da ClearIT?"*
             2. *"De que forma você está estruturando sua mentoria para elevar a maturidade técnica dos colaboradores L2?"*
 
-#### **US02 — Registro Quanti-Qualitativo Rápido (F01)**
+#### **US02 — Registro Quanti-Qualitativo Dinâmico (F01)**
 *   **Como** líder,  
-*   **Quero** registrar respostas rápidas de Sim/Não e uma breve dissertação argumentativa do encerramento da 1:1,  
-*   **Para** formalizar os acordos da conversa em menos de 5 minutos, sem gerar barreiras de burocracia ou uso de áudio.
+*   **Quero** preencher 5 perguntas obrigatórias de Sim ou Não que abrem campos de texto adicionais condicionalmente,  
+*   **Para** registrar dados ricos para a análise da IA com a menor fricção possível, mantendo uma área dissertativa geral e opcional ao final.
 *   **Critérios de Aceite:**
-    *   **Cenário 1: Validação de Campos Obrigatórios**
+    *   **Cenário 1: Condicionalidade dos Campos de Texto**
         *   **Dado** que o líder está na tela de questionário de fechamento,
-        *   **Quando** ele tenta clicar no botão "Enviar para Análise" sem marcar todas as 3 respostas de Sim/Não ou com a dissertação contendo menos de 100 caracteres,
-        *   **Então** o sistema deve manter o botão "Enviar para Análise" desabilitado e exibir alertas visuais em vermelho nos campos pendentes.
-    *   **Cenário 2: Validação de Limites de Texto**
-        *   **Dado** que o líder está digitando a "Dissertação Executiva" do encerramento,
-        *   **Quando** a quantidade de caracteres atinge 1000 caracteres,
-        *   **Então** o sistema deve impedir a digitação de novos caracteres e exibir um contador de caracteres `1000/1000` em vermelho.
-    *   **Cenário 3: Envio de Dados do Formulário**
-        *   **Dado** que o formulário está preenchido corretamente (3 checkboxes marcados e texto de 150 caracteres),
-        *   **Quando** o líder clica no botão "Enviar para Análise",
-        *   **Então** o sistema deve desabilitar o botão de envio, exibir um elemento visual de carregamento (spinner) com a mensagem *"IA processando feedback síncrono..."* e realizar a chamada POST à API REST.
+        *   **Quando** ele seleciona "Não" para Entregas/Resultados ou Alinhamento Cultural, OU "Sim" para Necessidade de Evolução, Suporte do Líder ou Foco no Futuro,
+        *   **Então** o sistema deve abrir um campo de texto curto específico para aquela pergunta detalhar a situação.
+    *   **Cenário 2: Validação de Campos Condicionais e Gerais**
+        *   **Dado** que o líder ativou um campo condicional de texto,
+        *   **Quando** ele tenta enviar sem preencher as perguntas ou com um campo condicional ativo vazio,
+        *   **Então** o sistema deve manter o botão "Enviar para Análise" desabilitado.
+    *   **Cenário 3: Área Dissertativa Geral Opcional**
+        *   **Dado** que o líder está no final do formulário,
+        *   **Quando** ele desejar adicionar elogios ou anotações livres,
+        *   **Então** ele poderá preencher a área dissertativa geral (opcional, sem limites mínimos de caracteres).
 
-#### **US03 — Geração de Feedback SBI via IA (F03)**
-*   **Como** líder (especialmente em transição técnico-gestão),  
-*   **Quero** que a Inteligência Artificial processe a dissertação corrida que escrevi e a organize no modelo Situação, Comportamento e Impacto (SBI),  
-*   **Para** que eu possa ter um relatório formatado de feedback profissional, reduzindo o meu viés subjetivo e gerando ações práticas.
+#### **US03 — Geração, Moderação e Revisão do Feedback SBI (F03)**
+*   **Como** líder,  
+*   **Quero** que a Inteligência Artificial estruture o feedback no padrão SBI (Situation, Behavior, Impact) e aplique moderação de tom para atenuar termos agressivos ou rudes,  
+*   **Para** que eu possa revisar, ajustar e aprovar um relatório final construtivo e profissional.
 *   **Critérios de Aceite:**
-    *   **Cenário 1: Renderização dos Blocos Estruturados**
-        *   **Dado** que a API retornou o JSON de processamento com sucesso,
-        *   **Quando** a interface exibe a tela de revisão de feedback SBI,
-        *   **Então** o sistema deve expor quatro caixas de texto editáveis: "Situação", "Comportamento", "Impacto" e "Ação de Desenvolvimento/PDI Sugerida" contendo os dados correspondentes retornados pela IA.
-    *   **Cenário 2: Ajuste Humano (Human-in-the-loop)**
-        *   **Dado** que o líder está revisando os blocos na tela,
-        *   **Quando** ele edita manualmente o texto gerado em qualquer um dos blocos,
-        *   **Então** o sistema deve aceitar a alteração e utilizá-la como o valor definitivo para o salvamento final.
-    *   **Cenário 3: Confirmação e Encerramento da 1:1**
-        *   **Dado** que o líder aprovou a redação final do feedback,
-        *   **Quando** ele clica no botão "Salvar e Concluir",
-        *   **Então** o sistema deve enviar as modificações para salvar no banco de dados, habilitar a geração de exportação em PDF e redirecionar o usuário à tela de listagem inicial com a notificação *"Reunião 10293 salva com sucesso!"*.
+    *   **Cenário 1: Moderação de Tom e Estrutura SBI**
+        *   **Dado** que o líder utilizou palavras rudes ou desabafos na dissertação,
+        *   **Quando** a IA processa o feedback,
+        *   **Então** ela deve neutralizar os termos agressivos, focando em fatos e mantendo o formato SBI + Recomendação de PDI.
+    *   **Cenário 2: Edição Humana Final (Human-in-the-loop)**
+        *   **Dado** que a IA gerou a sugestão SBI na tela de revisão,
+        *   **Quando** o líder edita as textareas de Situação, Comportamento, Impacto ou PDI,
+        *   **Então** as modificações devem ser salvas como a versão final.
 
-#### **US04 — Relatório Anonimizado e Higienizado para o RH (F04 & F05)**
-*   **Como** gerente de RH (Priscila Bacelar),  
-*   **Quero** receber relatórios das reuniões em formato macro, higienizados de dados sensíveis e com as categorizações de desenvolvimento geradas por IA,  
-*   **Para** monitorar a evolução dos times e riscos organizacionais de forma agregada, mantendo total sigilo individual e segurança jurídica.
+#### **US04 — Assinatura Digital, Ciência e Autenticação do Liderado (F06)**
+*   **Como** líder e liderado,  
+*   **Queremos** assinar digitalmente o relatório de 1:1, com autenticação obrigatória do liderado via token de e-mail,  
+*   **Para** garantir a ciência formal, a segurança e a validade do processo de feedback.
 *   **Critérios de Aceite:**
-    *   **Cenário 1: Higienização de PII (Dados Pessoais)**
-        *   **Dado** que a dissertação inserida pelo líder contenha nomes próprios ("Pedro de Souza"), dados financeiros ("recebe R$ 7.200,00"), termos médicos ("gripe e atestado"),
-        *   **Quando** a IA processa a dissertação,
-        *   **Então** deve higienizar o texto e salvar no log do RH substituindo os dados sensíveis por termos genéricos, ex: `[COLABORADOR]`, `[SALÁRIO OMITIDO]` e `[CONDIÇÃO MÉDICA OMITIDA]`.
-    *   **Cenário 2: Categorização do Log de RH**
-        *   **Dado** que a IA processou qualitativamente a dissertação,
-        *   **Quando** a API grava na tabela `RHAuditLog`,
-        *   **Então** os campos `status_pdi`, `barreiras_comportamentais`, `prontidao_carreira` e `sinalizacao_risco_turnover` devem conter valores tipados de forma exata de acordo com a leitura semântica.
-    *   **Cenário 3: Visualização por Área no Dashboard**
-        *   **Dado** que a gerente de RH acessa o painel de People Analytics,
-        *   **Quando** filtra as informações pela área de "Tecnologia",
-        *   **Então** o sistema deve apresentar as notas agregadas das áreas e a lista de colaboradores sinalizados para promoção, omitindo os textos das dissertações para garantir confidencialidade de time.
+    *   **Cenário 1: Assinatura do Líder**
+        *   **Dado** que o líder revisou o feedback,
+        *   **Quando** ele desenha no canvas ou digita seu nome na área de assinatura,
+        *   **Então** o sistema registra a assinatura do líder.
+    *   **Cenário 2: Autenticação via Token do Liderado**
+        *   **Dado** que o liderado acessou o feedback pendente de assinatura,
+        *   **Quando** ele clica para assinar,
+        *   **Então** ele deve solicitar um código de 6 dígitos que simula o envio para seu e-mail, e digitar este token no sistema para desbloquear sua área de assinatura.
+
+#### **US05 — Automatização de PDF e Envio por E-mail (F07)**
+*   **Como** liderado,  
+*   **Quero** receber automaticamente uma cópia estruturada em PDF do feedback assinado no meu e-mail,  
+*   **Para** arquivar meus históricos de desenvolvimento fora da plataforma.
+*   **Critérios de Aceite:**
+    *   **Cenário 1: Geração Automática de PDF**
+        *   **Dado** que ambas as partes assinaram o feedback 1:1,
+        *   **Quando** a 1:1 é concluída,
+        *   **Então** o sistema gera um PDF estruturado contendo as perguntas, análises da IA, assinaturas e tokens.
+    *   **Cenário 2: Envio para o E-mail**
+        *   **Dado** que o PDF foi gerado com sucesso,
+        *   **Quando** a reunião é finalizada,
+        *   **Então** o sistema direciona o documento para o e-mail do colaborador (simulado através de uma caixa de entrada local ou registro de log de disparo).
+
 
 ---
 

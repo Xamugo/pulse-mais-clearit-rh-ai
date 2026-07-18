@@ -67,42 +67,48 @@ graph TD
 
 ---
 
-## 5. Contrato da API REST (JSON Schema)
+## 5. Contrato da API / Payload JSON de Reuniões (localStorage)
 
-A comunicação entre a Interface do Usuário e o servidor backend é realizada de forma síncrona através do endpoint de fechamento de reuniões:
+No Pulse Mais SPA, os dados do formulário e o retorno da IA são serializados e mantidos no `localStorage` sob esquemas estruturados. O payload de gravação reflete o seguinte formato:
 
-### Endpoint: `POST /api/meetings/close`
-
-*   **Content-Type:** `application/json`
-
-#### JSON Schema de Validação de Envio (Request Schema):
+#### Payload de Envio / Gravação (Request Schema):
 ```json
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "MeetingCloseRequest",
-  "type": "object",
-  "properties": {
-    "id_lider": { "type": "string", "pattern": "^LID-\\d+$" },
-    "id_liderado": { "type": "string", "pattern": "^COL-\\d+$" },
-    "data_reuniao": { "type": "string", "format": "date-time" },
-    "respostas_fechadas": {
-      "type": "object",
-      "properties": {
-        "alinhamento_pdi": { "type": "string", "enum": ["SIM", "NÃO"] },
-        "gargalo_infraestrutura": { "type": "string", "enum": ["SIM", "NÃO"] },
-        "dificuldade_tecnica": { "type": "string", "enum": ["SIM", "NÃO"] }
-      },
-      "required": ["alinhamento_pdi", "gargalo_infraestrutura", "dificuldade_tecnica"],
-      "additionalProperties": false
+  "id_reuniao": "REQ-171829",
+  "id_lider": "LID-01",
+  "id_liderado": "COL-01",
+  "data_reuniao": "2026-07-07T18:22:00Z",
+  "respostas_perguntas": {
+    "entrega_metas": {
+      "valor": "NÃO",
+      "detalhe": "Faltou concluir o refactor das rotas da API na sprint."
     },
-    "dissertacao_argumentativa": { "type": "string", "minLength": 100, "maxLength": 1000 }
+    "alinhamento_cultural": {
+      "valor": "SIM",
+      "detalhe": ""
+    },
+    "necessidade_evolucao": {
+      "valor": "SIM",
+      "detalhe": "Dificuldade na arquitetura de microsserviços."
+    },
+    "suporte_lider": {
+      "valor": "NÃO",
+      "detalhe": ""
+    },
+    "foco_futuro_pdi": {
+      "valor": "SIM",
+      "detalhe": "Completar os cursos de Node.js e Docker recomendados."
+    }
   },
-  "required": ["id_lider", "id_liderado", "data_reuniao", "respostas_fechadas", "dissertacao_argumentativa"],
-  "additionalProperties": false
+  "observacoes_gerais": "Diego demonstrou grande entusiasmo durante a reunião.",
+  "assinatura_lider": "data:image/png;base64,...",
+  "assinatura_liderado": "data:image/png;base64,...",
+  "liderado_autenticado": true,
+  "token_autenticacao": "482910"
 }
 ```
 
-#### JSON Schema de Resposta do Servidor (Response Schema):
+#### JSON Schema de Resposta da IA (Response Schema):
 ```json
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
@@ -117,9 +123,10 @@ A comunicação entre a Interface do Usuário e o servidor backend é realizada 
         "situacao": { "type": "string" },
         "comportamento": { "type": "string" },
         "impacto": { "type": "string" },
-        "sugestao_pdi": { "type": "string" }
+        "sugestao_pdi": { "type": "string" },
+        "feedback_moderado": { "type": "string" }
       },
-      "required": ["situacao", "comportamento", "impacto", "sugestao_pdi"],
+      "required": ["situacao", "comportamento", "impacto", "sugestao_pdi", "feedback_moderado"],
       "additionalProperties": false
     },
     "log_higienizado_rh": {
@@ -139,9 +146,10 @@ A comunicação entre a Interface do Usuário e o servidor backend é realizada 
 }
 ```
 
-#### Respostas de Erro de API:
-*   **`400 Bad Request`:** Caso o payload não atenda ao Request Schema. Retorno: `{"status": "error", "message": "Validação de dados falhou: [detalhes do campo]"}`.
-*   **`500 Internal Server Error`:** Erros inesperados de conexão com o SQLite ou timeout com a API do Gemini. Retorno: `{"status": "error", "message": "Falha no servidor ou no processamento de IA."}`.
+#### Respostas de Erro de Processamento:
+- **API Key Ausente / Inválida:** Retorna fallback local com base no processador local heuristic.
+- **Falha de Schema:** Validações locais alertam o usuário para preencher os campos condicionais obrigatórios.
+
 
 ---
 

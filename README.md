@@ -26,6 +26,8 @@ O infográfico abaixo ilustra a arquitetura da solução: o processo se inicia n
 
 ### 📂 Pasta `docs/` (Planejamento e Negócio)
 * 📄 [Contexto Técnico Lite - Etapa 2](docs/technical-context-lite.md) — Documentação da viabilidade técnica, testes de engenharia de prompts e outputs gerados a partir do processamento textual.
+* 📄 [Prompt Mestre para Lovable (Atualização)](docs/lovable-prompt.md) — Prompt estruturado para atualizar o projeto existente.
+* 📄 [Prompt do Zero para Lovable (Novo Projeto)](docs/lovable-prompt-from-scratch.md) — Prompt completo para gerar a aplicação inteira do zero em uma nova conversa no Lovable.
 
 ### 📂 Pasta `src/` (Arquitetura do MVP)
 * 🛠️ [Templates de Prompts (JSON)](src/prompts_templates.json) — Arquivo de configuração de infraestrutura onde residem as instruções enviadas ao Large Language Model (LLM).
